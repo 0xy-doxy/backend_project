@@ -55,7 +55,7 @@ const userSchema = new Schema(
 
         if(!this.isModified("password")) return next();
 
-        this.password = bcrypt.hash(this.password, 10)
+        this.password = await bcrypt.hash(this.password, 10)
         next()
     })
 
@@ -92,4 +92,4 @@ const userSchema = new Schema(
     }
 
 
-export const user = mongoose.model("User", userSchema)
+export const User = mongoose.model("User", userSchema)
